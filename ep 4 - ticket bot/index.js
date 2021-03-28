@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({partials: ["MESSAGE", "USER", "REACTION"]});
+const dababy = new Discord.Client({partials: ["MESSAGE", "USER", "REACTION"]});
 const enmap = require('enmap');
 const {token, prefix} = require('./config.json');
 
@@ -10,11 +10,11 @@ const settings = new enmap({
     fetchAll: true
 });
 
-client.on('ready', () => {
+dababy.on('ready', () => {
     console.log('ready')
 });
 
-client.on('message', async message => {
+dababy.on('message', async message => {
     if(message.author.bot) return;
     if(message.content.indexOf(prefix) !== 0) return;
 
@@ -46,7 +46,7 @@ client.on('message', async message => {
     }
 });
 
-client.on('messageReactionAdd', async (reaction, user) => {
+dababy.on('messageReactionAdd', async (reaction, user) => {
     if(user.partial) await user.fetch();
     if(reaction.partial) await reaction.fetch();
     if(reaction.message.partial) await reaction.message.fetch();
@@ -78,4 +78,4 @@ client.on('messageReactionAdd', async (reaction, user) => {
     }
 });
 
-client.login(token);
+dababy.login(token);
